@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  openresty:
+    image: openresty/openresty:latest
+    container_name: openresty
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/usr/local/src
+      - ./conf/nginx:/etc/nginx/conf.d
+      - ./logs/nginx:/usr/local/openresty/nginx/logs
+    depends_on:
+      - php
+    networks:
+      - laravel
+
+  php:
+    image: php:7.3-fpm
+    container_name: php-fpm
+    volumes:
+      - ./src:/usr/local/src
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
