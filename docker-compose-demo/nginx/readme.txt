@@ -1,4 +1,4 @@
-1. 创建本地目录（可以不用）
+1. 创建本地目录
 mkdir -p src/public
 mkdir -p logs/nginx
 mkdir -p conf/nginx
