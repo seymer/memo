@@ -12,12 +12,12 @@ services:
       - ./logs/nginx:/usr/local/openresty/nginx/logs
     restart: always
     depends_on:
-      - php
+      - fpm
     networks:
       - unity
 
-  php:
-    # image: php:7.3-fpm
+  fpm:
+    # image: phrc/php72_fpm:v1.0
     build: .
     container_name: php-fpm
     volumes:

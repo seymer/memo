@@ -16,7 +16,7 @@ services:
       - laravel
 
   php:
-    image: php:7.3-fpm
+    image: php:7.2-fpm
     container_name: php-fpm
     volumes:
       - ./src:/usr/local/src
