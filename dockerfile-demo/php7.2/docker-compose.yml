@@ -17,7 +17,7 @@ services:
       - unity
 
   fpm:
-    # image: phrc/php72_fpm:v1.0
+    # image: phrc/php72_fpm:latest
     build: .
     container_name: php-fpm
     volumes:
