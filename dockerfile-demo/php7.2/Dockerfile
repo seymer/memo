@@ -30,7 +30,5 @@ RUN docker-php-ext-install -j$(nproc) \
     --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
 
-COPY php.ini /usr/local/etc/php/
-
 WORKDIR /usr/local/src
 
