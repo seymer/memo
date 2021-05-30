@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  openresty:
+    image: openresty/openresty:latest
+    container_name: openresty
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/usr/local/src
+      - ./conf/nginx:/etc/nginx/conf.d
+      - ./logs/nginx:/usr/local/openresty/nginx/logs
+    restart: always
+    depends_on:
+      - fpm
+    networks:
+      - unity
+
+  fpm:
+    # image: phrc/php74_fpm:latest
+    build: .
+    container_name: php-fpm
+    volumes:
+      - ./src:/usr/local/src
+    environment:
+      - PHP_ENABLE_XDEBUG=1
+    restart: always
+    networks:
+      - unity
+
+networks:
+  unity:
+    driver: bridge
